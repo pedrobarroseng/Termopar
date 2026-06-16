@@ -3,22 +3,22 @@ import matplotlib.pyplot as plt
 
 # Coeficientes oficiais do NIST (ITS-90) para a faixa que cobre 0 a 400 °C
 coefficients = {
-    # Faixa original NIST: 0.000 a 630.615 °C (Perfeito para nosso range)
+    # Faixa original NIST: 0.000 a 630.615 °C 
     'B': [0.0, -0.246508183460e-3, 0.590404211710e-5, -0.132579316360e-8, 0.156682919010e-11, -0.169445292400e-14, 0.629903470940e-18],
-    # Faixa original NIST: 0.000 a 1000.000 °C (Perfeito para nosso range)
-    'E': [0.0, 0.58665505700e-1, 0.45411050900e-4, -0.29441258600e-7, 0.10279313500e-10, -0.31047582700e-13, 0.55107333400e-16, -0.56546682100e-19, 0.25260828200e-22],
-    # Faixa original NIST: 0.000 a 760.000 °C (Perfeito para nosso range)
+    # CORRIGIDO - Faixa original NIST: 0.000 a 1000.000 °C 
+    'E': [0.0, 0.586655087100e-1, 0.450322755820e-4, 0.289084072120e-7, -0.330568966520e-09, 0.650244032700e-12, -0.191974955040e-15, -0.125366004970e-17, 0.214892175690e-20, -0.143880417820e-23, 0.359608994810e-27],
+    # Faixa original NIST: 0.000 a 760.000 °C 
     'J': [0.0, 0.50381187815e-1, 0.30475836930e-4, -0.85681065720e-7, 0.13228195295e-9, -0.17052958337e-12, 0.20948090697e-15, -0.12538395336e-18, 0.15631725697e-22],
-    # Faixa original NIST: 0.000 a 1372.000 °C (CORRIGIDO: Faixa positiva que contém o range 0-400 °C)
+    # Faixa original NIST: 0.000 a 1372.000 °C
     'K': [-0.176004136860e-1, 0.389212049750e-1, 0.185587700320e-4, -0.994575928740e-7, 0.318409457190e-9, -0.560728448890e-12, 0.560750590590e-15, -0.320207200030e-18, 0.971511471520e-22, -0.121047212750e-25],
-    # Faixa original NIST: 0.000 a 1300.000 °C (Perfeito para nosso range)
-    'N': [0.0, 0.25929394601e-1, 0.15710141880e-4, -0.43825627237e-7, 0.25261169794e-10, -0.91707073056e-14, 0.20493494285e-16, -0.27035706786e-19, 0.19846983828e-22, -0.61564175373e-26],
-    # Faixa original NIST: -50.000 a 1064.180 °C (Perfeito para nosso range)
-    'R': [0.0, 0.52896172970e-2, 0.13916658978e-4, -0.23885569305e-7, 0.35691600106e-10, -0.46234766629e-13, 0.46589269141e-16, -0.32658083445e-19, 0.14408561999e-22, -0.35887343270e-26, 0.38011116055e-30],
-    # Faixa original NIST: -50.000 a 1064.180 °C (Perfeito para nosso range)
-    'S': [0.0, 0.54031330266e-2, 0.12593428974e-4, -0.15247048156e-7, 0.23887673819e-10, -0.29141375376e-13, 0.29235728779e-16, -0.20054186064e-19, 0.87138566785e-23, -0.21661065921e-26, 0.22414791914e-30],
-    # Faixa original NIST: 0.000 a 400.000 °C (Casamento exato com o range do trabalho)
-    'T': [0.0, 0.38748106364e-1, 0.33190198092e-4, -0.16307418306e-6, 0.53544663799e-9, -0.11156384414e-11, 0.15174005256e-14, -0.11878147683e-17, 0.41324442900e-21]
+    # Faixa original NIST: 0.000 a 1300.000 °C 
+    'N': [0.0, 0.259293946010e-1, 0.157101418800e-4, 0.438256272370e-07, -0.252611697940e-09, 0.643118193390e-12, -0.100634715190e-14, 0.997453389920e-18, -0.608632456070e-21, 0.208492293390e-24, -0.306821961510e-28],
+    # Faixa original NIST: -50.000 a 1064.180 °C 
+    'R': [0.0, 0.528961729765e-02, 0.139166589782e-04, -0.238855693017e-07, 0.356916001063e-10, -0.462347666298e-13, 0.500777441034e-16, -0.373105886191e-19, 0.157716482367e-22, -0.281038625251e-26],
+    # Faixa original NIST: -50.000 a 1064.180 °C 
+    'S': [0.0, 0.540313308631e-02, 0.125934289740e-04, -0.232477968689e-07, 0.322028823036e-10, -0.331465196389e-13, 0.255744251786e-16, -0.125068871393e-19, 0.271443176145e-23],
+    # Faixa original NIST: 0.000 a 400.000 °C 
+    'T': [0.0, 0.387481063640e-01, 0.332922278800e-04, 0.206182434040e-06, -0.218822568460e-08, 0.109968809280e-10, -0.308157587720e-13, 0.454791352900e-16, -0.275129016730e-19]
 }
 
 def calcular_mv(tipo, t):
@@ -37,13 +37,13 @@ t_valores = np.arange(0, 400.5, 0.5)
 
 while True:
     print("Tipos de termopar: B, E, J, K, N, R, S, T")
-    tipo_termopar = input("Diga qual tipo de termopar gostarias de ver o gráfico:").upper().strip()
+    thermocouple_type = input("Diga qual tipo de termopar gostarias de ver o gráfico:").upper().strip()
 
-    if tipo_termopar in coefficients:
-        mV_calculados = calcular_mv(tipo_termopar, t_valores)
+    if thermocouple_type in coefficients:
+        mV_calculados = calcular_mv(thermocouple_type, t_valores)
     
-        plt.plot(t_valores, mV_calculados, label =f'Tipo {tipo_termopar}', color = 'blue')
-        plt.title(f'Termopar Tipo {tipo_termopar}: Temperatura x mV')
+        plt.plot(t_valores, mV_calculados, label =f'Tipo {thermocouple_type}', color = 'blue')
+        plt.title(f'Termopar Tipo {thermocouple_type}: Temperatura x mV')
         plt.xlabel('Temperatura (°C)')
         plt.ylabel(f'Tensão (mV)')
         plt.grid(True)
@@ -70,5 +70,5 @@ while True:
         break
     
     else:
-        print(f"Tipo do termopar inválido, {tipo_termopar} não é uma opção válida")
+        print(f"Tipo do termopar inválido, {thermocouple_type} não é uma opção válida")
 
